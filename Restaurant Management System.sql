@@ -42,7 +42,9 @@ select m.item_name, count(o.order_id) as no_of_orders from menutable5 as m join 
 -- qs6 retrive the list of orders delivered to a specific address
 select o.order_id,m.item_name,o.delivery_address from orders5 as o join menutable5 as m on m.item_id=o.item_id;
 -- qs7 retrive total number of orders placed by each customer
-select * from menutable5 cross join orders5;
+select customer_name, count(order_id) as total_orders
+from orders5
+group by customer_name;
 
 
 
