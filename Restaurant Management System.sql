@@ -31,7 +31,7 @@ values(201,101,'john doe','123 main st','2024-04-15','12.99'),
 -- qs1 retrieve all resto offering itailian cuisine
 select * from restaurants5 where cuisine_type='italian';
 -- qs2 list all menu items with prices for specific restauarant
-
+select item_name, price from menutable5 where restaurant_id = 1;
 -- qs3 calculate total revenue generated from orders placed in last month
 select sum(total_amt) from orders5 where month(order_date)=4;
 -- qs4 update the description of a specific menu item
@@ -41,8 +41,7 @@ set sql_safe_updates=0;
 select m.item_name, count(o.order_id) as no_of_orders from menutable5 as m join orders5 as o using(item_id) group by m.item_name order by count(o.order_id)desc;
 -- qs6 retrive the list of orders delivered to a specific address
 select o.order_id,m.item_name,o.delivery_address from orders5 as o join menutable5 as m on m.item_id=o.item_id;
-
--- qs9 retrive total number of orders placed by each customer
+-- qs7 retrive total number of orders placed by each customer
 select * from menutable5 cross join orders5;
 
 
